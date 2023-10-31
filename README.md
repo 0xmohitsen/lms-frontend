@@ -50,7 +50,7 @@
   ],
 ```
 
-4. Add the tailwind directives on the top of  src/index.css file
+4. Add the tailwind directives on the top of src/index.css file
 
 ```
    @tailwind base;
