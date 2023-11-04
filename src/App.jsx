@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import Contact from './pages/Contact';
+import Denied from './pages/Denied';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path='/register' element={<Signup/>} />
       <Route path='/login' element={<Signin/>} />
       <Route path='/contacts' element={<Contact/>} />
+      <Route path='/denied' element={<Denied/>} />
       <Route path='*' element={<NotFound/>} />
     </Routes>
   )
