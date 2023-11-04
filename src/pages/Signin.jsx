@@ -30,10 +30,12 @@ function Signin(){
         console.log(signInDetail);
         if(!signInDetail.email || !signInDetail.password){
             toast.error("Please fill all the required fields");
+            return;
         }
         
         if(!isEmail(signInDetail.email)){
             toast.error("Invalid email provided");
+            return;
         }
 
         const response = await dispatch(login(signInDetail));
@@ -66,7 +68,7 @@ function Signin(){
                                     name="email"
                                     id="email"
                                     placeholder="Enter your email.."
-                                    className="bg-transparent px-2 py-1 border border-white"/>
+                                    className="bg-transparent px-2 py-1 border rounded-sm"/>
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -79,9 +81,9 @@ function Signin(){
                                     name="password"
                                     id="password"
                                     placeholder="Enter your password.."
-                                    className="bg-transparent px-2 py-1 border border-white"/>
+                                    className="bg-transparent px-2 py-1 border rounded-sm"/>
                         </div>
-                        <button className="text-lg font-semibold bg-yellow-600 hover:bg-yellow-700 transition-all ease-in-out duration-300 py-2 px-4 mt-2">Sign in</button>
+                        <button className="text-lg font-semibold bg-yellow-800 hover:bg-yellow-600 transition-all ease-in-out duration-300 py-2 px-4 mt-2 rounded-sm">Sign in</button>
                         <p className="text-center">
                             Don't have an account ? <Link to={`/register`} className="text-accent">Sign up</Link>
                         </p>
