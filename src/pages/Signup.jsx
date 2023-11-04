@@ -120,7 +120,7 @@ function Signup(){
                             name="username" 
                             id="username" 
                             placeholder="Enter your username.." 
-                            className="px-2 py-1 bg-transparent border border-white" />
+                            className="px-2 py-1 bg-transparent border rounded-sm" />
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -133,7 +133,7 @@ function Signup(){
                             name="email" 
                             id="email" 
                             placeholder="Enter your email.." 
-                            className="px-2 py-1 bg-transparent border border-white" />
+                            className="px-2 py-1 bg-transparent border rounded-sm" />
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -146,10 +146,10 @@ function Signup(){
                         name="password" 
                         id="password" 
                         placeholder="Enter your password.." 
-                        className="px-2 py-1 bg-transparent border border-white" />
+                        className="px-2 py-1 bg-transparent border rounded-sm" />
                     </div>
 
-                    <button className="mt-2 bg-yellow-800 hover:bg-yellow-600 transition-all ease-in-out duration-300 px-4 py-2 font-semibold">
+                    <button className="mt-2 bg-yellow-800 hover:bg-yellow-600 transition-all ease-in-out duration-300 px-4 py-2 font-semibold rounded-sm text-lg">
                         Create account
                     </button>
 
