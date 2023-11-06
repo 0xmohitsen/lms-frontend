@@ -26,7 +26,7 @@ function App() {
 
       <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
         <Route path='/courses/create' element={<CourseCreate/>}/>
-      <Route path='/courses/description' element={<CourseDescription/>} />
+        <Route path='/courses/description' element={<CourseDescription/>} />
       </Route>
 
       <Route path='/courses' element={<CourseList/>} />
