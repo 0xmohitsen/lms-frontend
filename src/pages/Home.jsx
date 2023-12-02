@@ -19,7 +19,7 @@ function Home(){
                         <button className="bg-yellow-500 font-semibold text-lg px-5 py-3 rounded-md hover:bg-yellow-600 transition-all ease-in-out duration-300 cursor-pointer">Explore courses</button>
                     </Link>
                     <Link to={`/contacts`} >
-                        <button className="border border-yellow-500 font-semibold text-lg px-5 py-3 rounded-md hover:bg-yellow-600 transition-all ease-in-out duration-300 cursor-pointer">Contact Us</button>
+                        <button className="border border-yellow-500 font-semibold text-lg px-5 py-3 rounded-md hover:bg-yellow-600 transition-all ease-in-out duration-300 cursor-pointer mt-2">Contact Us</button>
                     </Link>
                 </div>
                 </div>
