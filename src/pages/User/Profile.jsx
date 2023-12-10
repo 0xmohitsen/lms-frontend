@@ -30,7 +30,7 @@ function Profile(){
 
                             <div className="flex items-center justify-between gap-2">
                                 <Link 
-                                    to={`/change-password`}
+                                    to={`/user/change-password`}
                                     className="w-1/2 bg-yellow-600  hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold p-2 cursor-pointer text-center"
                                 >
                                     <button>
@@ -38,7 +38,7 @@ function Profile(){
                                     </button>
                                 </Link>
                                 <Link 
-                                    to={`/update`}
+                                    to={`/user/update`}
                                     className="w-1/2 bg-yellow-600  hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold p-2 cursor-pointer text-center"
                                 >
                                     <button>
