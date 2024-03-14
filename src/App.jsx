@@ -14,6 +14,11 @@ import CourseCreate from './pages/Course/CourseCreate';
 import RequireAuth from './components/RequireAuth';
 import Profile from './pages/User/Profile';
 import EditProfile from './pages/User/EditProfile';
+import Checkout from './pages/Payment/Checkout';
+import CheckoutSuccess from './pages/Payment/CheckoutSuccess';
+import CheckoutFailure from './pages/Payment/CheckoutFailure';
+import DisplayLectures from './pages/Dashboard/DisplayLecture';
+import AddLecture from './pages/Dashboard/AddLecture';
 
 function App() {
 
@@ -30,10 +35,17 @@ function App() {
       <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}>
         <Route path='/user/me' element={<Profile/>}/>
         <Route path='/user/update' element={<EditProfile/>}/>
+
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout/success" element={<CheckoutSuccess />} />
+        <Route path="/checkout/fail" element={<CheckoutFailure />} />
+
+        <Route path="/course/displaylectures" element={<DisplayLectures />} />
       </Route>
 
       <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
         <Route path='/courses/create' element={<CourseCreate/>}/>
+        <Route path="/course/addlecture" element={<AddLecture />} />
       </Route>
 
       <Route path='/courses' element={<CourseList/>} />
