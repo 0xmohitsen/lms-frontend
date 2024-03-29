@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import HomeLayout from "../../layouts/HomeLayout";
 import { deleteCourse, getAllCourses } from "../../redux/slices/courseSlice";
 import { getPaymentRecord } from "../../redux/slices/razorpaySlice";
-import { getStatsData } from "../../redux/slices/statSlice";
 ChartJS.register(ArcElement, BarElement, CategoryScale, Legend, LinearScale, Title, Tooltip);
 
 function AdminDashboard() {
