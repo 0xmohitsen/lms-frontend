@@ -1,12 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import HomeLayout from "../../layouts/HomeLayout";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { getUserData } from "../../redux/slices/authSlice";
 
 function Profile(){
 
     const dispatch = useDispatch();
 
+    async function getUser(){
+        await dispatch(getUserData());
+    }
+
+    getUser();
     const userData = useSelector(state => state?.auth?.data);
+
+    console.log(userData);
 
     return (
         <HomeLayout>
