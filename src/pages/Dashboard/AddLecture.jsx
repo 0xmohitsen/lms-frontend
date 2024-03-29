@@ -10,12 +10,13 @@ import { addCourseLecture } from "../../redux/slices/lectureSlice";
 function AddLecture() {
 
     const courseDetails = useLocation().state;
+    console.log(courseDetails);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
     const [userInput, setUserInput] = useState({
-        id: courseDetails._id,
+        id: courseDetails?._id,
         lecture: undefined,
         title: "",
         description: "",

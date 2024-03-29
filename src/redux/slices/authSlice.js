@@ -113,13 +113,14 @@ const authSlice = createSlice({
                     state.data = {};
                 })
                 .addCase(getUserData.fulfilled, (state, action) => {
-                    console.log(action?.payload?.data);
+                    console.log(action?.payload?.data?.user);
                     if(!action?.payload?.user) return;
-                    localStorage.setItem("data", JSON.stringify(action?.payload?.data?.user));
+                    localStorage.setItem("data", JSON.stringify(action?.payload?.user));
                     localStorage.setItem("isLoggedIn", true);
+                    localStorage.setItem("role", action?.payload?.user?.role);
                     state.isLoggedIn = true;
-                    state.role = action?.payload?.data?.user?.role;
-                    state.data = action?.payload?.data?.user;
+                    state.role = action?.payload?.user?.role;
+                    state.data = action?.payload?.user;
                 })
     }
 });

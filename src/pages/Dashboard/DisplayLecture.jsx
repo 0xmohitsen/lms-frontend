@@ -12,8 +12,11 @@ function DisplayLectures() {
     const navigate = useNavigate();
     
     const {state} = useLocation();
-    const {lectures} = useSelector((state) => state.lecture);
+    console.log('State', state);
+    const lectures  = useSelector((state) => state.lecture);
     const {role} = useSelector((state) => state.auth);
+
+    console.log(lectures);
 
     const [currentVideo, setCurrentVideo] = useState(0);
 
