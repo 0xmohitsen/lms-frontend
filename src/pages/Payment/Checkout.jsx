@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import HomeLayout from "../../layouts/HomeLayout";
-import { getRazorPayId, purchaseCourseBundle, verifyUserPayment } from "../../redux/slices/razorPaySlice";
+import { getRazorPayId, purchaseCourseBundle, verifyUserPayment } from "../../redux/slices/razorpaySlice";
 
 function Checkout() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const { isPaymentVerified } = useSelector((state) => state.razorpay);
     
     const razorpayKey = useSelector((state) => state?.razorpay?.key);
     const subscription_id = useSelector((state) => state?.razorpay?.subscription_id);
@@ -24,6 +26,7 @@ function Checkout() {
 
     async function handleSubscription(e) {
         e.preventDefault();
+        console.log(subscription_id,razorpayKey);
         if(!razorpayKey || !subscription_id) {
             toast.error("something went wrong");
             return;
@@ -31,7 +34,7 @@ function Checkout() {
         const options = {
             key: razorpayKey,
             subscription_id: subscription_id,
-            name: "Courses .pvt ltd",
+            name: "Tech with Mohit pvt ltd",
             description: "Subscription",
             theme: {
                 color: '#F37254'
@@ -40,11 +43,14 @@ function Checkout() {
                 paymentDetails.razorpay_payment_id = response.razorpay_payment_id;
                 paymentDetails.razorpay_subscription_id = response.razorpay_subscription_id;
                 paymentDetails.razorpay_signature = response.razorpay_signature;
-                toast.success("payment successfull");
-                
+                toast.success("payment successful");
+
+                console.log("Payment details after successful payment : ",paymentDetails);
+
                 const res = await dispatch(verifyUserPayment(paymentDetails));
                 console.log("res on checkout", res, paymentDetails);
-                res?.payload ? navigate("/checkout/success") : navigate("/checkout/fail");
+                
+                !isPaymentVerified ? navigate("/checkout/success") : navigate("/checkout/fail");
             }
         };
 
@@ -52,14 +58,12 @@ function Checkout() {
         paymentOptions.open();
     }
 
-    async function load() {
-        await dispatch(getRazorPayId());
-        await dispatch(purchaseCourseBundle());
-    }
-
     useEffect(() => {
-        load();
-    }, [])
+        (async () => {
+          await dispatch(getRazorPayId());
+          await dispatch(purchaseCourseBundle());
+        })();
+      }, []);
 
     return (
         <HomeLayout>
@@ -75,13 +79,13 @@ function Checkout() {
                         <p className="text-[17px]">
                         This purchase will allow you to access all the available courses on our platform for {" "}
 
-                        <span className="font-bold text-yellow-500">1 yr duratrion</span>{" "}
+                        <span className="font-bold text-yellow-500">1 yr duration</span>{" "}
                         All the existing and new launched courses will be available
                         </p>
 
                         <p className="flex items-center justify-center gap-1 text-2xl font-bold text-yellow-500">
                             <BiRupee />
-                            <span>499</span> only
+                            <span>1</span> only
 
                         </p>
                         <div className="text-gray-200">
