@@ -1,13 +1,21 @@
 import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import HomeLayout from "../../layouts/HomeLayout";
+import { useEffect } from "react";
+import { getUserData } from "../../redux/slices/authSlice";
 
 function CourseDescription(){
 
     const { state } = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getUserData();
+    });
 
     const {role , data} = useSelector((state) => state.auth);
 
+    console.log("What data is coming ",data);
     return (
         <HomeLayout>
             <div className="flex flex-col min-h-[90vh] items-center justify-center text-white pt-12 px-20 flex-wrap">
@@ -23,7 +31,7 @@ function CourseDescription(){
                             <p className="font-semibold"><span className="text-yellow-500">Instructor: {" "}</span><span>{state?.createdBy}</span></p>
                         </div>
 
-                        {role == 'ADMIN' || data?.subscription?.status === 'active' ? ( <button onClick={() => Navigate("/course/displaylectures" , {state: {...state}})} className="bg-yellow-600 text-xl rounded-md font-bold px-5 py-3 w-full hover:bg-yellow-700 transition-all ease-in-out duration-300">Watch Lectures</button>) : ( <button onClick={() => Navigate("/checkout")} className="bg-yellow-600 text-xl rounded-md font-bold px-5 py-3 w-full hover:bg-yellow-700 transition-all ease-in-out duration-300">Subscribe</button>)}
+                        {role === 'ADMIN' || data?.user?.subscription?.status === 'active' ? ( <button onClick={() => navigate("/course/displaylectures" , {state: {...state}})} className="bg-yellow-600 text-xl rounded-md font-bold px-5 py-3 w-full hover:bg-yellow-700 transition-all ease-in-out duration-300">Watch Lectures</button>) : ( <button onClick={() => navigate("/checkout")} className="bg-yellow-600 text-xl rounded-md font-bold px-5 py-3 w-full hover:bg-yellow-700 transition-all ease-in-out duration-300">Subscribe</button>)}
                     </div>
 
                     {/* right part of the grid */}
